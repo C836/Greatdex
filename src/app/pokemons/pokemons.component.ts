@@ -13,7 +13,13 @@ export class PokemonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getPokemons().subscribe((response: any) => {
-      console.log(response)
+      response.results.forEach((result: { name: string }) => {
+        this.dataService
+          .getPokemonData(result.name)
+          .subscribe((pokemonData: any) => {
+            console.log(pokemonData)
+          });
+      });
     });
   }
 }

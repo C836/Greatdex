@@ -12,4 +12,8 @@ export class DataService {
   getPokemons() {
     return this.http.get(`${BASE_URL}/pokemon?limit=10`);
   }
+  
+  getPokemonData(name: string) {
+    return this.http.get(`${BASE_URL}/pokemon/${name}`);
+  }
 }
