@@ -1,12 +1,18 @@
 <div *ngIf="pokemons" class="pokemons-list">
-    <section *ngFor="let pokemon of pokemons" class="pokemon">
-        <figure>
-            <img [src]="pokemon.sprites.other.home.front_default" [alt]="pokemon.name">
-        </figure>
-        
-        <aside>
-            <h1>{{pokemon.name}}</h1>
-            <p>{{pokemon.types[0].type.name}}</p>
-        </aside>
-    </section>
+  <section *ngFor="let pokemon of pokemons" class="pokemon">
+    <figure>
+      <img
+        [src]="pokemon.sprites.other.home.front_default"
+        [alt]="pokemon.name"
+      />
+    </figure>
+
+    <aside>
+      <h1>{{ pokemon.name }}</h1>
+      <p>{{ pokemon.types[0].type.name }}</p>
+    </aside>
+  </section>
+
+  <button (click)="previous()">previous</button>
+  <button (click)="next()">next</button>
 </div>

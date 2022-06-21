@@ -9,8 +9,8 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getPokemons() {
-    return this.http.get(`${BASE_URL}/pokemon?limit=10`);
+  getPokemons(limit: number, offset: number) {
+    return this.http.get(`${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`);
   }
   
   getPokemonData(name: string) {
