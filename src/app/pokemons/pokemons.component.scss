@@ -1,0 +1,18 @@
+.pokemons-list {
+  margin: 0 auto;
+  width: 1300px;
+  max-width: 85%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 5%;
+}
+
+.pokemon {
+  background-color: azure;
+
+  & figure,
+  img {
+    width: 80%;
+  }
+}
