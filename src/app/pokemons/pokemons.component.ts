@@ -17,7 +17,7 @@ export class PokemonsComponent implements OnInit {
         this.dataService
           .getPokemonData(result.name)
           .subscribe((pokemonData: any) => {
-            console.log(pokemonData)
+            this.pokemons.push(pokemonData);
           });
       });
     });

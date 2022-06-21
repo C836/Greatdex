@@ -1,1 +1,11 @@
-<p>pokemons works!</p>
+<div *ngIf="pokemons">
+    <section *ngFor="let pokemon of pokemons">
+        <figure>
+            <img [src]="pokemon.sprites.other.home.front_default" [alt]="pokemon.name">
+        </figure>
+        
+        <aside>
+            <h1>{{pokemon.name}}</h1>
+        </aside>
+    </section>
+</div>
