@@ -17,34 +17,34 @@ export class PokemonsComponent implements OnInit {
   }
 
   getPokemons() {
-    this.pokemons = []
+    this.pokemons = [];
 
     this.dataService
       .getPokemons(10, Number(String(this.page) + '0'))
       .subscribe((response: any) => {
         response.results.map((result: { name: string }) => {
-          this.dataService
-            .getPokemonData(result.name)
-            .subscribe((pokemonData: any) => {
-              this.pokemons.push(pokemonData);
-            });
+          this.getPokemonData(result);
         });
       });
   }
 
+  getPokemonData(result: any) {
+    this.dataService
+      .getPokemonData(result.name)
+      .subscribe((pokemonData: any) => {
+        this.pokemons.push(pokemonData);
+      });
+  }
+
   previous() {
-    this.page--;
-
-    console.log(this.page + 0);
-
-    this.getPokemons();
+    if (this.page > 0) {
+      this.page--;
+      this.getPokemons();
+    }
   }
 
   next() {
     this.page++;
-
-    console.log(this.page + 0);
-
     this.getPokemons();
   }
 }
