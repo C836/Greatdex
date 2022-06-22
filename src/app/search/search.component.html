@@ -1,5 +1,5 @@
-<input (change)="getPokemonData($event.target)">
+<input (change)="getPokemonData($event.target)" />
 
 <section *ngIf="details" class="details">
-    <h1>{{details.name}}</h1>
+  <app-details [item]="details"></app-details>
 </section>
