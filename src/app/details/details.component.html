@@ -1,9 +1,101 @@
-<section *ngIf="item.name" class="details">
+<!-- <section class="details">
   <article>
-    <h1>{{ item.name }}</h1>
+    <figure></figure>
+
+    <aside>
+      <h1>{{ item.name }}</h1>
+      <p>#{{ item.id }}</p>
+      <p>{{ item.height }}</p>
+      <p>{{ item.weight }}</p>
+
+      <section class="stats">
+        <div *ngFor="let stats of item.stats">
+          <p>{{ stats.stat.name }}</p>
+          <figure>
+            <span [ngStyle]="{ width: stats.base_stat + '%' }"> ⠀ </span>
+          </figure>
+        </div>
+      </section>
+    </aside>
+  </article> -->
+
+<!-- *ngIf="item.name" -->
+
+<section class="details">
+  <article>
+    <section class="display">
+      <!-- <img [src]="item.sprites.versions['generation-v']['black-white'].animated.front_default"> -->
+      <figure>
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/132.gif"
+        />
+      </figure>
+
+      <div class="types">
+        <h3 [class]="'fire' + ' type'">Fire</h3>
+        <h3 [class]="'water' + ' type'">Water</h3>
+      </div>
+    </section>
+
+    <aside class="info">
+      <h1>Charizard</h1>
+      <p class="id">#6</p>
+
+      <section class="physical">
+        <div>
+          <h3>{{ "20" + " KG" }}</h3>
+          <small>Weight</small>
+        </div>
+
+        <div>
+          <h3>{{ "20" + " M" }}</h3>
+          <small>Height</small>
+        </div>
+      </section>
+
+      <ul class="stats">
+        Base stats
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+        <li>
+          <h2>hp</h2>
+          <figure>
+            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+          </figure>
+        </li>
+      </ul>
+    </aside>
   </article>
 
-  <aside>
+  <section class="buttons">
     <button (click)="hide()"><</button>
     <figure>
       <div></div>
@@ -11,5 +103,5 @@
       <div></div>
       <div></div>
     </figure>
-  </aside>
+  </section>
 </section>
