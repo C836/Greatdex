@@ -2,17 +2,23 @@
   <article>
     <section class="display">
       <figure>
-        <img [src]="item.sprites.versions['generation-v']['black-white'].animated.front_default" />
+        <img
+          [src]="item.sprites.versions['generation-v']['black-white'].animated.front_default">
       </figure>
 
-      <div  class="types">
-        <h3 *ngFor="let types of item.types" [class]="'type ' + types.type.name">{{types.type.name}}</h3>
+      <div class="types">
+        <h3
+          *ngFor="let types of item.types"
+          [class]="'type ' + types.type.name"
+        >
+          {{ types.type.name }}
+        </h3>
       </div>
     </section>
 
     <aside class="info">
-      <h1>{{item.name}}</h1>
-      <p class="id">#{{item.id}}</p>
+      <h1>{{ item.name }}</h1>
+      <p class="id">#{{ item.id }}</p>
 
       <section class="physical">
         <div>
@@ -29,18 +35,20 @@
       <ul class="stats">
         <p>Base stats</p>
         <li *ngFor="let stats of item.stats; let index = index">
-          <h2>{{pokemonStats[index]}}</h2>
+          <h2>{{ pokemonStats[index] }}</h2>
           <figure>
-            <span [ngStyle]="{ width: stats.base_stat * STATS_PERCENTAGE + '%'}"
-            [class]="stats.stat.name"> ⠀ </span>
+            <span
+              [ngStyle]="{ width: stats.base_stat * STATS_PERCENTAGE + '%' }"
+              [class]="pokemonStats[index].replace('.', '')"
+            >
+              ⠀
+            </span>
           </figure>
-
-          
         </li>
       </ul>
     </aside>
   </article>
-  
+
   <section class="buttons">
     <button (click)="hide()"><</button>
     <figure>
