@@ -1,25 +1,13 @@
 <div class="search-container">
-  <input
-    #search
-    list="pokemon_list"
-    class="search expandright"
-    id="searchright"
-    type="search"
-    name="q"
-    placeholder="Search"
-    (keyup.enter)="searchPokemon(search, $event.target)"
-  />
-  <label class="button searchbutton" for="searchright"
-    ><span class="mglass">&#9906;</span></label
-  >
-
-  <input
-    #search
-    list="pokemon_list"
-    class="search-mobile"
-    placeholder="Search"
-    (keyup.enter)="searchPokemon(search, $event.target)"
-  />
+  <div class="search-bar">
+    <input
+      #msearch
+      list="pokemon_list"
+      placeholder="Search"
+      (keyup.enter)="searchPokemon(msearch)"
+    />
+    <span (click)="searchPokemon(msearch)">&#9906;</span>
+  </div>
 
   <datalist id="pokemon_list">
     <option

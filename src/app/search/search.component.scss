@@ -1,132 +1,38 @@
-.search-container {
-  position: relative;
-  display: inline-block;
-  margin: 4px 2px;
-  height: 50px;
-  width: 50px;
-  vertical-align: bottom;
-  z-index: 10;
-}
-
-.mglass {
-  display: inline-block;
-  pointer-events: none;
-  transform: rotate(-45deg);
-}
-
-.searchbutton {
-  position: absolute;
-  font-size: 40px;
-  margin: 0;
-  padding: 0 16px;
-  background-color: #3d3d3d;
-  border-radius: 50%;
-  z-index: 10;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #3d3d3da9;
-  }
-}
-
-.search:focus + .searchbutton {
-  transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  background-color: white;
-  color: black;
-}
-
-.search {
-  position: absolute;
-  left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+.search-bar {
   background-color: white;
   outline: none;
   border: none;
-  padding: 0;
-  width: 0;
-  height: 100%;
-  z-index: 1;
-  transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  z-index: 10;
-
-  &:focus {
-    width: 363px; /* Bar width+1px */
-    padding: 0 16px 0 0;
-  }
-}
-
-.expandright {
-  left: auto;
-  right: 60px;
   border-radius: 50px;
-
-  &:focus {
-    padding: 0 0 0 16px;
-  }
-}
-
-.search-mobile {
-  display: none;
-  background-color: white;
-  outline: none;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 50px;
-  width: 85%;
+  width: 300px;
   height: 100%;
   position: relative;
   z-index: 10;
-}
 
-datalist {
-  position: absolute;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 0 0 5px 5px;
-  border-top: none;
-  font-family: sans-serif;
-  width: 350px;
-  padding: 5px;
-  max-height: 10rem;
-  overflow-y: auto
-  
-}
-
-option {
-  background-color: white;
-  padding: 4px;
-  color: blue;
-  margin-bottom: 1px;
-   font-size: 18px;
-  cursor: pointer;
-}
-
-option:hover,  .active{
-  background-color: lightblue;
-}
-@media only screen and (max-width: 550px) {
-  .search-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  & input {
+    width: 90%;
+    height: 100%;
+    border-radius: 50px;
+    padding: 12px 15px;
+    outline: none;
+    border: none;
   }
 
-  .expandright,
-  .searchbutton {
-    display: none;
+  & span {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.7rem;
+    position: absolute;
+    right: 5px;
+    color: black;
+    height: 100%;
+    width: 10%;
+    transform: rotate(-45deg);
   }
-
-  .expandright:focus ~ .search-background, .search-mobile:focus ~ .search-background{
-    opacity: 1;
-  }
-
-  .search-mobile {
-    display: block;
+}
+@media only screen and (max-width: 850px) {
+  .search-bar {
+    width: 85%;
     margin: 0 auto;
   }
 }

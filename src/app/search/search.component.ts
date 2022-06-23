@@ -17,9 +17,10 @@ export class SearchComponent implements OnInit {
     this.pokemons_list = pokemon.all();
   }
 
-  searchPokemon(input: HTMLInputElement, target: any) {
+  searchPokemon(input: any) {
+    this.getPokemonData(input.value);
+    input.value = ''
     input.blur();
-    this.getPokemonData(target.value);
   }
 
   getPokemonData(name: string | undefined) {
