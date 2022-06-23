@@ -1,5 +1,5 @@
 {
-  "name": "marvel-api",
+  "name": "poke-api",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
