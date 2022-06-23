@@ -2,7 +2,7 @@
   <section *ngFor="let pokemon of pokemons" [class]="'pokemon ' + pokemon.types[0].type.name">
     <figure>
       <img
-        [src]="pokemon.sprites.other.home.front_default"
+        [src]="pokemon.sprites.versions['generation-v']['black-white'].animated.front_default"
         [alt]="pokemon.name"
       />
     </figure>
