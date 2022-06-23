@@ -4,7 +4,7 @@ import { DataService } from '../services/data.services';
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.scss'],
+  styleUrls: ['./pokemons.component.scss', './types.scss'],
 })
 export class PokemonsComponent implements OnInit {
   pokemons: any[] = [];
