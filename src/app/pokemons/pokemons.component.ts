@@ -20,7 +20,7 @@ export class PokemonsComponent implements OnInit {
     this.pokemons = [];
 
     this.dataService
-      .getPokemons(10, Number(String(this.page) + '0'))
+      .getPokemons(12, this.page * 12)
       .subscribe((response: any) => {
         response.results.map((result: { name: string }) => {
           this.getPokemonData(result);
