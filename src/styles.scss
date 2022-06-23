@@ -19,6 +19,32 @@
   --dark: #705746;
   --steel: #b7b7ce;
   --fairy: #d685ad;
+
+  --HP: #ff0000;
+  --ATK: #f08030;
+  --DEF: #f8d030;
+  --SATK: #6890f0;
+  --SDEF: #78c850;
+  --SPD: #f85888;
+}
+
+.HP {
+  background-color: var(--HP);
+}
+.ATK {
+  background-color: var(--ATK);
+}
+.DEF {
+  background-color: var(--DEF);
+}
+.SATK {
+  background-color: var(--SATK);
+}
+.SDEF {
+  background-color: var(--SDEF);
+}
+.SPD {
+  background-color: var(--SPD);
 }
 
 .normal.type,
