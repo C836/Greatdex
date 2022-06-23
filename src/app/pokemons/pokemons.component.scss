@@ -4,8 +4,9 @@
   max-width: 85%;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 5%;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  column-gap: 5%;
+  row-gap: 40px;
 }
 
 .pokemon {
@@ -46,7 +47,7 @@
 
   & h1 {
     margin-top: 20px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-transform: capitalize;
     letter-spacing: 2px;
     font-weight: 500;

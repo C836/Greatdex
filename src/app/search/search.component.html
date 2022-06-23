@@ -1,4 +1,18 @@
-<input (keyup.enter)="getPokemonData($event.target)" />
+<div class="search-container" >
+  <input
+    class="search expandright"
+    id="searchright"
+    type="search"
+    name="q"
+    placeholder="Search"
+    (keyup.enter)="getPokemonData($event.target)"
+  />
+  <label class="button searchbutton" for="searchright"
+    ><span class="mglass">&#9906;</span></label
+  >
+
+  <input class="search-mobile" placeholder="Search" (keyup.enter)="getPokemonData($event.target)">
+</div>
 
 <section *ngIf="details" class="details">
   <app-details [item]="details"></app-details>
