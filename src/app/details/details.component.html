@@ -1,100 +1,46 @@
-<!-- <section class="details">
-  <article>
-    <figure></figure>
-
-    <aside>
-      <h1>{{ item.name }}</h1>
-      <p>#{{ item.id }}</p>
-      <p>{{ item.height }}</p>
-      <p>{{ item.weight }}</p>
-
-      <section class="stats">
-        <div *ngFor="let stats of item.stats">
-          <p>{{ stats.stat.name }}</p>
-          <figure>
-            <span [ngStyle]="{ width: stats.base_stat + '%' }"> ⠀ </span>
-          </figure>
-        </div>
-      </section>
-    </aside>
-  </article> -->
-
-<!-- *ngIf="item.name" -->
-
-<section class="details">
+<section *ngIf="item.name" class="details">
   <article>
     <section class="display">
-      <!-- <img [src]="item.sprites.versions['generation-v']['black-white'].animated.front_default"> -->
       <figure>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/132.gif"
-        />
+        <img [src]="item.sprites.versions['generation-v']['black-white'].animated.front_default" />
       </figure>
 
-      <div class="types">
-        <h3 [class]="'fire' + ' type'">Fire</h3>
-        <h3 [class]="'water' + ' type'">Water</h3>
+      <div  class="types">
+        <h3 *ngFor="let types of item.types" [class]="'type ' + types.type.name">{{types.type.name}}</h3>
       </div>
     </section>
 
     <aside class="info">
-      <h1>Charizard</h1>
-      <p class="id">#6</p>
+      <h1>{{item.name}}</h1>
+      <p class="id">#{{item.id}}</p>
 
       <section class="physical">
         <div>
-          <h3>{{ "20" + " KG" }}</h3>
+          <h3>{{ item.weight / 10 + " KG" }}</h3>
           <small>Weight</small>
         </div>
 
         <div>
-          <h3>{{ "20" + " M" }}</h3>
+          <h3>{{ item.height / 10 + " M" }}</h3>
           <small>Height</small>
         </div>
       </section>
 
       <ul class="stats">
-        Base stats
-        <li>
-          <h2>hp</h2>
+        <p>Base stats</p>
+        <li *ngFor="let stats of item.stats; let index = index">
+          <h2>{{pokemonStats[index]}}</h2>
           <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
+            <span [ngStyle]="{ width: stats.base_stat * STATS_PERCENTAGE + '%'}"
+            [class]="stats.stat.name"> ⠀ </span>
           </figure>
-        </li>
-        <li>
-          <h2>hp</h2>
-          <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
-          </figure>
-        </li>
-        <li>
-          <h2>hp</h2>
-          <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
-          </figure>
-        </li>
-        <li>
-          <h2>hp</h2>
-          <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
-          </figure>
-        </li>
-        <li>
-          <h2>hp</h2>
-          <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
-          </figure>
-        </li>
-        <li>
-          <h2>hp</h2>
-          <figure>
-            <span [ngStyle]="{ width: 90 + '%' }"> ⠀ </span>
-          </figure>
+
+          
         </li>
       </ul>
     </aside>
   </article>
-
+  
   <section class="buttons">
     <button (click)="hide()"><</button>
     <figure>
