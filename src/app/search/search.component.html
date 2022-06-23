@@ -1,17 +1,32 @@
-<div class="search-container" >
+<div class="search-container">
   <input
+    #search
+    list="pokemon_list"
     class="search expandright"
     id="searchright"
     type="search"
     name="q"
     placeholder="Search"
-    (keyup.enter)="getPokemonData($event.target)"
+    (keyup.enter)="searchPokemon(search, $event.target)"
   />
   <label class="button searchbutton" for="searchright"
     ><span class="mglass">&#9906;</span></label
   >
 
-  <input class="search-mobile" placeholder="Search" (keyup.enter)="getPokemonData($event.target)">
+  <input
+    #search
+    list="pokemon_list"
+    class="search-mobile"
+    placeholder="Search"
+    (keyup.enter)="searchPokemon(search, $event.target)"
+  />
+
+  <datalist id="pokemon_list">
+    <option
+      *ngFor="let pokemon of pokemons_list"
+      value="{{ pokemon }}"
+    ></option>
+  </datalist>
 </div>
 
 <section *ngIf="details" class="details">
