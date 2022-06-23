@@ -1,37 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-:root{
-    --normal: #A8A77A;
-    --fire: #EE8130;
-    --water: #6390F0;
-    --electric: #F7D02C;
-    --grass: #7AC74C;
-    --ice: #96D9D6;
-    --fighting: #C22E28;
-    --poison: #A33EA1;
-    --ground: #E2BF65;
-    --flying: #A98FF3;
-    --psychic: #F95587;
-    --bug: #A6B91A;
-    --rock: #B6A136;
-    --ghost: #735797;
-    --dragon: #6F35FC;
-    --dark: #705746;
-    --steel: #B7B7CE;
-    --fairy: #D685AD;
+:root {
+  --normal: #a8a77a;
+  --fire: #ee8130;
+  --water: #6390f0;
+  --electric: #f7d02c;
+  --grass: #7ac74c;
+  --ice: #96d9d6;
+  --fighting: #c22e28;
+  --poison: #a33ea1;
+  --ground: #e2bf65;
+  --flying: #a98ff3;
+  --psychic: #f95587;
+  --bug: #a6b91a;
+  --rock: #b6a136;
+  --ghost: #735797;
+  --dragon: #6f35fc;
+  --dark: #705746;
+  --steel: #b7b7ce;
+  --fairy: #d685ad;
+}
+
+.normal.type,
+.normal figure::before {
+  background-color: var(--normal);
+}
+.fire.type,
+.fire figure::before {
+  background-color: var(--fire);
+}
+.water.type,
+.water figure::before {
+  background-color: var(--water);
+}
+.electric.type,
+.electric figure::before {
+  background-color: var(--electric);
+}
+.grass.type,
+.grass figure::before {
+  background-color: var(--grass);
+}
+.ice.type,
+.ice figure::before {
+  background-color: var(--ice);
+}
+.fighting.type,
+.fighting figure::before {
+  background-color: var(--fighting);
+}
+.poison.type,
+.poison figure::before {
+  background-color: var(--poison);
+}
+.ground.type,
+.ground figure::before {
+  background-color: var(--ground);
+}
+.flying.type,
+.flying figure::before {
+  background-color: var(--flying);
+}
+.psychic.type,
+.psychic figure::before {
+  background-color: var(--psychic);
+}
+.bug.type,
+.bug figure::before {
+  background-color: var(--bug);
+}
+.rock.type,
+.rock figure::before {
+  background-color: var(--rock);
+}
+.ghost.type,
+.ghost figure::before {
+  background-color: var(--ghost);
+}
+.dragon.type,
+.dragon figure::before {
+  background-color: var(--dragon);
+}
+.dark.type,
+.dark figure::before {
+  background-color: var(--dark);
+}
+.steel.type,
+.steel figure::before {
+  background-color: var(--steel);
+}
+.fairy.type,
+.fairy figure::before {
+  background-color: var(--fairy);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,body {
-    height: 100%;
-    width: 100%;
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
 
 body {
-    background-color: #202124;
+  background-color: #202124;
 }
