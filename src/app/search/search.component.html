@@ -1,4 +1,4 @@
-<input (change)="getPokemonData($event.target)" />
+<input (keyup.enter)="getPokemonData($event.target)" />
 
 <section *ngIf="details" class="details">
   <app-details [item]="details"></app-details>

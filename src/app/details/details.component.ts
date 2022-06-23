@@ -10,4 +10,7 @@ export class DetailsComponent{
 
   constructor() { }
 
+  hide() {
+    this.item = {}
+  }
 }

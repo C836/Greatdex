@@ -1,10 +1,10 @@
-<section class="details">
+<section *ngIf="item.name" class="details">
   <article>
     <h1>{{ item.name }}</h1>
   </article>
 
   <aside>
-    <button><</button>
+    <button (click)="hide()"><</button>
     <figure>
       <div></div>
       <div></div>
