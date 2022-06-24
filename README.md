@@ -4,28 +4,23 @@
 </br>
 Pokedex interativa com todos os 913 pokémons inclusos!
 
-[Web app](https://greatdex.vercel.app/)</br>
-<img src="src/assets/img/README_cover.png">
+[Web app](https://greatdex.vercel.app/)<br></br><img src="src/assets/img/README_cover.png">
 </div>
 
-##💻 Sobre
+## 💻 Sobre
 
 Este foi meu primeiro projeto utilizando o framework Angular! A aplicação consiste em uma <i>pokédex</i> interativa utilizando [PokeAPI](https://pokeapi.co/) para a requisição de todos os dados dos pokémons.
 
 ### Features
 
 * <b>Listagem dos pokémons</b>
-A página conta principalmente com uma grande lista de pokémons com seus sprites e nomes correspondentes.
-</br>
+A página conta principalmente com uma grande lista de pokémons com seus sprites e nomes correspondentes.<br></br>
 * <b>Lista paginada</b>
-Para melhor navegação, a aplicação conta com um componente de paginação na área inferior da página.
-</br>
+Para melhor navegação, a aplicação conta com um componente de paginação na área inferior da página.<br></br>
 * <b>Sprites animados!</b>
-Todas as imagens dos pokémons (até a 5ª geração) conta com sua versão animada na página de listagem.
-</br>
+Todas as imagens dos pokémons (até a 5ª geração) conta com sua versão animada na página de listagem.<br></br>
 * <b>Sistema de busca</b>
-Caso queira pesquisar por um pokémon específico, a aplicação também conta com um sistema de pesquisa (com autocomplete), que joga direto para o card de detalhes do pokémon selecionado.
-</br>
+Caso queira pesquisar por um pokémon específico, a aplicação também conta com um sistema de pesquisa (com autocomplete), que joga direto para o card de detalhes do pokémon selecionado.<br></br>
 * <b>Detalhes</b>
 O card exibe informações adicionais sobre o pokémon escolhido, como statísticas de combate, peso, altura, id e seus tipos.
 
