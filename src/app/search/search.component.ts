@@ -17,10 +17,6 @@ export class SearchComponent implements OnInit {
     this.pokemons_list = pokemon.all();
   }
 
-  hideDetails():void{
-    this.details = {}
-  }
-
   searchPokemon(input: any) {
     this.getPokemonData(input.value);
     input.value = ''

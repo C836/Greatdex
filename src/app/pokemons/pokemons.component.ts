@@ -21,10 +21,6 @@ export class PokemonsComponent implements OnInit {
     this.details = pokemon
   }
 
-  hideDetails():void{
-    this.details = {}
-  }
-
   getPokemons() {
     this.pokemons = [];
 
