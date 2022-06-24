@@ -53,3 +53,31 @@
     font-weight: 500;
   }
 }
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 1.5rem "Righteous", cursive;
+  color: white;
+  padding: 25px 0;
+
+  & p {
+    margin: 0 15px;
+  }
+
+  & button {
+    font: 2rem "Righteous", cursive;
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &.disabled {
+      cursor: default;
+      opacity: .3;
+    }
+  }
+}
