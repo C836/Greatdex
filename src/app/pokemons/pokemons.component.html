@@ -1,5 +1,5 @@
 <div *ngIf="pokemons" class="pokemons-list">
-  <section *ngFor="let pokemon of pokemons" [class]="'pokemon ' + pokemon.types[0].type.name">
+  <section (click)="showDetails(pokemon)" *ngFor="let pokemon of pokemons" [class]="'pokemon ' + pokemon.types[0].type.name">
     <figure>
       <img
         [src]="pokemon.sprites.versions['generation-v']['black-white'].animated.front_default"
@@ -12,6 +12,10 @@
     </aside>
   </section>
 </div>
+
+<section class="details">
+  <app-details [item]="details" [hide]="hideDetails"></app-details>
+</section>
 
 <button (click)="previous()">previous</button>
 {{ page }}

@@ -8,13 +8,17 @@ import * as pokemon from 'pokemon';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  details: any = [];
+  details: any = {};
   pokemons_list: readonly string[] = [];
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.pokemons_list = pokemon.all();
+  }
+
+  hideDetails():void{
+    this.details = {}
   }
 
   searchPokemon(input: any) {

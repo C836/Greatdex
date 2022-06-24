@@ -9,11 +9,20 @@ import { DataService } from '../services/data.services';
 export class PokemonsComponent implements OnInit {
   pokemons: any[] = [];
   page: number = 0;
+  details: any = {};
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getPokemons();
+  }
+
+  showDetails(pokemon:any){
+    this.details = pokemon
+  }
+
+  hideDetails():void{
+    this.details = {}
   }
 
   getPokemons() {

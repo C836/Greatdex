@@ -7,13 +7,10 @@ import { Component, Input} from '@angular/core';
 })
 export class DetailsComponent{
   @Input() item:any = {};
+  @Input() hide!: any;
 
   pokemonStats = ['HP', 'ATK', 'DEF','S.ATK', 'S.DEF', 'SPD']
   STATS_PERCENTAGE: number = 0.39
 
   constructor() { }
-
-  hide() {
-    this.item = {}
-  }
 }
