@@ -1,3 +1,5 @@
+<div *ngIf="item.name" class="details-background"></div>
+
 <section *ngIf="item.name" class="details">
   <article>
     <section class="display">
@@ -50,7 +52,7 @@
   </article>
 
   <section class="buttons">
-    <button (click)="hide()"><</button>
+    <button (click)="hideDetails()"><</button>
     <figure>
       <div></div>
       <div></div>

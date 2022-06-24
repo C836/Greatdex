@@ -1,3 +1,13 @@
+.details-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #111111cb;
+  z-index: 11;
+  top: 0;
+  left: 0;
+}
+
 .details {
   width: 675px;
   max-width: 90%;
@@ -7,7 +17,7 @@
   align-items: center;
   color: white;
 
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -220,6 +230,8 @@
       height: 65px;
       width: 65px;
       border-radius: 50%;
+      color: white;
+      font: 2rem Righteous, cursive;
     }
 
     & figure {
