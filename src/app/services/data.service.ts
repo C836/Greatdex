@@ -14,6 +14,6 @@ export class DataService {
   }
   
   getPokemonData(name: string) {
-    return this.http.get(`${BASE_URL}/pokemon/${name}`);
+    return this.http.get(`${BASE_URL}/pokemon/${name.toLowerCase()}`);
   }
 }
