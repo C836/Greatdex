@@ -5,7 +5,7 @@ footer {
     #c92638 10%,
     #db5f6b 100%
   );
-  rotate: 0deg;
+  rotate: 180deg;
 
   & .center::before{
       background: linear-gradient(
@@ -16,4 +16,24 @@ footer {
       );
     }
   }
+
+    
+.inner-circle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -200px);
+  width: 110px;
+  height: 61px;
+  display: flex;
+  justify-content: center;
+
+  & span {
+    border: 6px solid black;
+    border-bottom-left-radius: 61px;
+    border-bottom-right-radius: 61px;
+    border-top: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  }
+}
 
