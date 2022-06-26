@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonsComponent } from './pokemons/pokemons.component';
 import { SearchComponent } from './search/search.component';
 import { DetailsComponent } from './details/details.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonsComponent,
     SearchComponent,
-    DetailsComponent
+    DetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
