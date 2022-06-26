@@ -2,24 +2,24 @@
 @import url("https://db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon");
 
 :root {
-  --normal: #a8a77a;
-  --fire: #ee8130;
-  --water: #6390f0;
-  --electric: #f7d02c;
-  --grass: #7ac74c;
-  --ice: #96d9d6;
-  --fighting: #c22e28;
-  --poison: #a33ea1;
-  --ground: #e2bf65;
-  --flying: #a98ff3;
-  --psychic: #f95587;
-  --bug: #a6b91a;
-  --rock: #b6a136;
-  --ghost: #735797;
-  --dragon: #6f35fc;
-  --dark: #705746;
-  --steel: #b7b7ce;
-  --fairy: #d685ad;
+  --normal: rgb(168, 167, 122, .4);
+  --fire: rgb(238, 129, 48, .4);
+  --water: rgb(99, 144, 240, .4);
+  --electric: rgb(247, 208, 44, .4);
+  --grass: rgb(122, 199, 76, .4);
+  --ice: rgb(150, 217, 214, .4);
+  --fighting: rgb(194, 46, 40, .4);
+  --poison: rgb(163, 62, 161, .4);
+  --ground: rgb(226, 191, 101, .4);
+  --flying: rgb(169, 143, 243, .4);
+  --psychic: rgb(249, 85, 135, .4);
+  --bug: rgb(166, 185, 26, .4);
+  --rock: rgb(182, 161, 54, .4);
+  --ghost: rgb(115, 87, 151, .4);
+  --dragon: rgb(111, 53, 252, .4);
+  --dark: rgb(112, 87, 70, .4);
+  --steel: rgb(183, 183, 206, .4);
+  --fairy: rgb(214, 133, 173, .4);
 
   --HP: #ff0000;
   --ATK: #f08030;
@@ -27,6 +27,8 @@
   --SATK: #6890f0;
   --SDEF: #78c850;
   --SPD: #f85888;
+
+  --background: white;
 }
 
 .HP {
@@ -49,75 +51,93 @@
 }
 
 .normal.type,
-.normal figure::before {
+.pokemon.normal,
+.normal figure::before{
   background-color: var(--normal);
 }
 .fire.type,
-.fire figure::before {
+.pokemon.fire,
+.fire figure::before{
   background-color: var(--fire);
 }
 .water.type,
-.water figure::before {
+.pokemon.water,
+.water figure::before{
   background-color: var(--water);
 }
 .electric.type,
-.electric figure::before {
+.pokemon.electric,
+.electric figure::before{
   background-color: var(--electric);
 }
 .grass.type,
-.grass figure::before {
+.pokemon.grass,
+.grass figure::before{
   background-color: var(--grass);
 }
 .ice.type,
-.ice figure::before {
+.pokemon.ice,
+.ice figure::before{
   background-color: var(--ice);
 }
 .fighting.type,
-.fighting figure::before {
+.pokemon.fighting,
+.fighting figure::before{
   background-color: var(--fighting);
 }
 .poison.type,
-.poison figure::before {
+.pokemon.poison,
+.poison figure::before{
   background-color: var(--poison);
 }
 .ground.type,
-.ground figure::before {
+.pokemon.ground,
+.ground figure::before{
   background-color: var(--ground);
 }
 .flying.type,
-.flying figure::before {
+.pokemon.flying,
+.flying figure::before{
   background-color: var(--flying);
 }
 .psychic.type,
-.psychic figure::before {
+.pokemon.psychic,
+.psychic figure::before{
   background-color: var(--psychic);
 }
 .bug.type,
-.bug figure::before {
+.pokemon.bug,
+.bug figure::before{
   background-color: var(--bug);
 }
 .rock.type,
-.rock figure::before {
+.pokemon.rock,
+.rock figure::before{
   background-color: var(--rock);
 }
 .ghost.type,
-.ghost figure::before {
+.pokemon.ghost,
+.ghost figure::before{
   background-color: var(--ghost);
 }
 .dragon.type,
-.dragon figure::before {
+.pokemon.dragon,
+.dragon figure::before{
   background-color: var(--dragon);
 }
 .dark.type,
-.dark figure::before {
+.pokemon.dark,
+.dark figure::before{
   background-color: var(--dark);
 }
 .steel.type,
-.steel figure::before {
+.pokemon.steel,
+.steel figure::before{
   background-color: var(--steel);
 }
 .fairy.type,
-.fairy figure::before {
+.pokemon.fairy,
+.fairy figure::before{
   background-color: var(--fairy);
 }
 
@@ -134,5 +154,5 @@ body {
 }
 
 body {
-  background-color: #202124;
+  background-color: var(--background);
 }

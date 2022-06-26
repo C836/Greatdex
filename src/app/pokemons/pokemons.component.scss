@@ -10,7 +10,6 @@
 }
 
 .pokemon {
-  background-color: rgb(63, 63, 63);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,8 +25,9 @@
     z-index: 1;
 
     &::before {
-      filter: saturate(0.8);
-      opacity: .4;
+
+      filter: saturate(1);
+      opacity: 1;
       content: '';
       position: absolute;
       z-index: -1;
