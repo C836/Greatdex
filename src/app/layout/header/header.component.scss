@@ -13,6 +13,7 @@ header {
   height: 200px;
   position: relative;
   overflow: hidden;
+  border-bottom: 6px solid black;
 
   &::before {
     content: "";
@@ -56,10 +57,11 @@ header {
     &::before {
       content: "";
       position: absolute;
-      width: 240px;
+      width: 230px;
       height: 120px;
       border-top-left-radius: 120px;
       border-top-right-radius: 120px;
+      border: 6px solid black;
       top: 100%;
       left: 50%;
       background: linear-gradient(
@@ -130,8 +132,24 @@ header {
   transform: translate(-50%, -50%);
   width: 100px;
   height: 100px;
-  border: 10px solid white;
-  border-radius: 50%;
-  background-color: white;
   z-index: 1;
+
+  & img {
+    width: 100%;
+    border: 10px solid white;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    transform: translate(-5px, -5px);
+    border: 10px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    z-index: -100;
+  }
 }
