@@ -1,4 +1,5 @@
 export interface PokemonConfig {
+  id: number;
   name: string;
   sprites: any;
   type: keyof typeof TypesConfig;
