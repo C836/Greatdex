@@ -1,22 +1,20 @@
 import styled from "styled-components";
-import { types } from "../../global";
 import { TypesConfig } from "../../types/pokemons";
-
-export const PokemonTypes = styled.div`
-  display: flex;
-  z-index: 1;
-`;
+import { types } from "../../global";
 
 export const Type = styled.div<{ type: keyof typeof TypesConfig }>`
   line-height: 0;
-  font: 600 .9rem "Segoe UI", sans-serif;
+  font: 600 0.9rem "Segoe UI", sans-serif;
   padding: 3px 15px;
   text-transform: uppercase;
   border-radius: 25px;
-  margin: 16px 10px 0 10px;
   position: relative;
-  text-align: right;
-  background-color: ${props => types[props.type]};
+  background-color: ${(props) => types[props.type]};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100%;
 
   ::before {
     background-color: inherit;
