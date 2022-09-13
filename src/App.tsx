@@ -1,4 +1,3 @@
-import { Pagination } from "./components/Pagination/Pagination";
 import { GlobalStyle } from "./global";
 import { Footer } from "./layout/footer/Footer";
 import { Header } from "./layout/header/Header";
@@ -10,7 +9,6 @@ function App() {
       <GlobalStyle />
       <Header />
       <List />
-      <Pagination page={0} />
       <Footer />
     </>
   );

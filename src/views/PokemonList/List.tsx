@@ -3,9 +3,10 @@ import * as S from "./List.styled";
 import { Card } from "../../components/Card/Card";
 import { getPokemonData, getPokemons } from "../../services";
 import { PokemonConfig } from "../../types/pokemons";
+import { Pagination } from "../../components/Pagination/Pagination";
 
 export function List() {
-  const [pokemons, setPokemons] = useState<any[]>([]);
+  const [pokemons, setPokemons] = useState<PokemonConfig[]>([]);
 
   const listUpdate = () => {
     setPokemons([]);
@@ -40,18 +41,24 @@ export function List() {
   useEffect(listUpdate, []);
 
   return (
-    <S.List>
-      {pokemons?.map((card, index) => {
-        const { name, sprites, types } = card;
-        return (
-          <Card
-            name={name}
-            sprites={sprites}
-            type={types[0].type.name}
-            key={index}
-          />
-        );
-      })}
-    </S.List>
+    <>
+      <S.List>
+        {pokemons?.map((card, index) => {
+          const { id, name, sprites, types } = card;
+
+          return (
+            <Card
+              id={id}
+              name={name}
+              sprites={sprites}
+              type={types[0].type.name}
+              types={types}
+              key={index}
+            />
+          );
+        })}
+      </S.List>
+      <Pagination page={0} />
+    </>
   );
 }
