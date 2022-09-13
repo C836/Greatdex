@@ -2,6 +2,11 @@ export interface PokemonConfig {
   name: string;
   sprites: any;
   type: keyof typeof TypesConfig;
+  types: {
+    type: {
+      name: keyof typeof TypesConfig;
+    };
+  }[];
 }
 
 export enum TypesConfig {
