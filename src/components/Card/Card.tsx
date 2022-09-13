@@ -1,13 +1,16 @@
 import { PokemonConfig } from "../../types/pokemons";
 import * as S from "./Card.styled";
 import background from "./../../assets/img/poke_background.svg"
+import { PokemonTypes } from "../PokemonTypes/PokemonTypes";
 
-export function Card({name, sprites, type}: PokemonConfig) {
+export function Card({id, name, sprites, type, types}: PokemonConfig) {
 
   return (
     <S.Card
       type={type}
     >
+      <S.Id pokeId={id} />
+
       <S.SpriteWrapper
         type={type}
         background={background}
@@ -19,6 +22,7 @@ export function Card({name, sprites, type}: PokemonConfig) {
       </S.SpriteWrapper>
 
       <S.Specie>{name}</S.Specie>
+      <PokemonTypes types={types} />
     </S.Card>
   );
 }

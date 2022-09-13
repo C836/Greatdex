@@ -1,34 +1,42 @@
 import styled from "styled-components";
 
-import { types } from "../../global";
 import { TypesConfig } from "../../types/pokemons";
 
 export const Card = styled.figure<{ type: keyof typeof TypesConfig }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10%;
   font-family: "Righteous", cursive;
   color: white;
-  background-color: ${(props) => types[props.type]};
+  background-color: #e3e3e3;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all .1s;
+
+  :hover {
+    outline: 3px solid black;
+  }
 `;
 
-export const SpriteWrapper = styled.figure<{ type: keyof typeof TypesConfig, background: string }>`
+export const SpriteWrapper = styled.figure<{
+  type: keyof typeof TypesConfig;
+  background: string;
+}>`
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 1;
 
   ::before {
-    filter: saturate(1);
-    opacity: 1;
     content: "";
     position: absolute;
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: ${(props) => types[props.type]};
+    background-color: #00000020;
     mask: url(${(props) => props.background}) no-repeat center;
   }
 `;
@@ -38,15 +46,54 @@ export const Sprite = styled.img`
   image-rendering: pixelated;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.4));
 `;
 
 export const Specie = styled.h1`
-  margin-top: 20px;
   font-size: 1.6rem;
   text-transform: capitalize;
+  margin-top: 15px;
   letter-spacing: 3px;
   font-weight: 500;
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
     1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+`;
+
+export const Id = styled.div<{ pokeId: number }>`
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: ${props => 55 + (String(props.pokeId).length - 1) * 10}px;
+  height: 35px;
+  background-color: #4f070f;
+  clip-path: polygon(0 0, 100% 0%, 70% 100%, 0 100%);
+  z-index: 1;
+
+  ::before {
+    content: "${(props) => props.pokeId}";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+    left: 5px;
+    width: ${props => 31 + (String(props.pokeId).length - 1) * 10}px;
+    height: 25px;
+    background-color: #c40b24;
+    clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
+  }
+
+  ::after {
+    content: "";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+    left: 5px;
+    width: ${props => 41 + (String(props.pokeId).length - 1) * 10}px;
+    height: 25px;
+    background-color: #c40b24;
+    clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
+    z-index: -1;
+  }
 `;
