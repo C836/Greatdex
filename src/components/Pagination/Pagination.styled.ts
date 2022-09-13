@@ -24,6 +24,7 @@ export const Button = styled.button<{ disabled: boolean }>`
   outline: none;
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
     1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
   opacity: ${(props) => (props.disabled ? "0.3" : "1")};
 `;

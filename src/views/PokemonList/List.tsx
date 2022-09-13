@@ -4,14 +4,24 @@ import { Card } from "../../components/Card/Card";
 import { getPokemonData, getPokemons } from "../../services";
 import { PokemonConfig } from "../../types/pokemons";
 import { Pagination } from "../../components/Pagination/Pagination";
+import pokemon from "pokemon";
 
 export function List() {
-  const [pokemons, setPokemons] = useState<PokemonConfig[]>([]);
+  const [pokemons, setPokemons] = useState<{
+    list: PokemonConfig[];
+    page: number;
+  }>({ list: [], page: 0 });
+  
+  const offsetUpdate = (page:number) => {
+    setPokemons({ ...pokemons, page: page})
+  }
 
   const listUpdate = () => {
-    setPokemons([]);
+    setPokemons({ ...pokemons, list: [] });
 
-    getPokemons(12, 0).then((responseList) => {
+    const offset = pokemons.page * 12;
+
+    getPokemons(12, offset).then((responseList) => {
       if (responseList) {
         getListData(responseList);
       }
@@ -27,23 +37,24 @@ export function List() {
           unorderedList.push(pokemonData.data);
 
           if (unorderedList.length === list.length) {
-            setPokemons(
-              unorderedList.sort((a, b) => {
+            setPokemons({
+              ...pokemons,
+              list: unorderedList.sort((a, b) => {
                 return a.id - b.id;
-              })
-            );
+              }),
+            });
           }
         }
       });
     });
   };
 
-  useEffect(listUpdate, []);
+  useEffect(listUpdate, [pokemons.page]);
 
   return (
     <>
       <S.List>
-        {pokemons?.map((card, index) => {
+        {pokemons.list?.map((card, index) => {
           const { id, name, sprites, types } = card;
 
           return (
@@ -58,7 +69,7 @@ export function List() {
           );
         })}
       </S.List>
-      <Pagination page={0} />
+      <Pagination page={pokemons.page} update={offsetUpdate} />
     </>
   );
 }
