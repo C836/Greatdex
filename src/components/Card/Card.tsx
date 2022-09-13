@@ -1,10 +1,9 @@
-import { PokemonConfig } from "../../types/pokemons";
 import * as S from "./Card.styled";
-import background from "./../../assets/img/poke_background.svg"
-import { PokemonTypes } from "../PokemonTypes/PokemonTypes";
+import background from "./../../assets/img/poke_background.svg";
+import { PokemonConfig } from "../../types/pokemons";
+import { PokeType } from "../PokeType/PokeType";
 
-export function Card({id, name, sprites, type, types}: PokemonConfig) {
-
+export function Card({ id, name, sprites, type, types }: PokemonConfig) {
   return (
     <S.Card
       type={type}
@@ -16,13 +15,22 @@ export function Card({id, name, sprites, type, types}: PokemonConfig) {
         background={background}
       >
         <S.Sprite
-          src={sprites.versions["generation-v"]["black-white"].animated.front_default}
+          src={sprites.versions["generation-v"]["black-white"].animated.front_default} 
           alt={name}
         />
       </S.SpriteWrapper>
 
       <S.Specie>{name}</S.Specie>
-      <PokemonTypes types={types} />
+
+      <S.PokemonTypes>
+        {types.map((item, index) => {
+          const type = item.type.name;
+
+          return (
+            <PokeType type={type} key={index} />
+          );
+        })}
+      </S.PokemonTypes>
     </S.Card>
   );
 }

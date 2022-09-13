@@ -97,3 +97,10 @@ export const Id = styled.div<{ pokeId: number }>`
     z-index: -1;
   }
 `;
+
+export const PokemonTypes = styled.div`
+  display: flex;
+  z-index: 1;
+  margin-top: 20px;
+  column-gap: 15px;
+`;
