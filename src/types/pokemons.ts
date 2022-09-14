@@ -11,6 +11,7 @@ export interface PokemonConfig {
 }
 
 export enum TypesConfig {
+  "any",
   "normal",
   "fire",
   "water",
