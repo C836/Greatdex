@@ -16,3 +16,14 @@ export async function getPokemons(limit: number, offset: number) {
     return null;
   }
 }
+
+export async function getFilteredPokemons({ type }: { type?: number }) {
+  try {
+    const response = await axios.get(BASE_URL + "/type/" + String(type));
+
+    return response.data.pokemon;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
