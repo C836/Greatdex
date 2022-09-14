@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const Header = styled.header``;
+export const Header = styled.header`
+  margin-bottom: 50px
+`;
 
 export const LogoWrapper = styled.figure`
   position: absolute;
