@@ -1,20 +1,16 @@
 import * as S from "./Search.styled";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import pokemon from "pokemon";
 import { useEffect, useState } from "react";
-
-interface listItem {
-  id: number;
-  name: string;
-}
+import pokemon from "pokemon";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { SearchListConfig } from "../../types";
 
 export function Search() {
-  const [autocomplete, setList] = useState<listItem[]>([]);
+  const [autocomplete, setList] = useState<Array<SearchListConfig>>([]);
 
   const pokemonList = pokemon.all();
 
   const searchPokemons = () => {
-    const autocompleteList: listItem[] = [];
+    const autocompleteList: Array<SearchListConfig> = [];
 
     pokemonList.map((name, index) => {
       autocompleteList.push({
