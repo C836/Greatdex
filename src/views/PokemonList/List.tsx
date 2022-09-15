@@ -1,21 +1,19 @@
-import { useEffect, useState } from "react";
 import * as S from "./List.styled";
+import { useEffect, useState } from "react";
 import { Card } from "../../components/Card/Card";
 import { getPokemonData, getPokemons } from "../../services";
-import { PokemonConfig, TypesConfig } from "../../types/pokemons";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filters } from "../../components/Filters/Filters";
 import { getFilteredPokemons } from "../../services/getPokemons";
 import { getTypeId } from "../../utils/getTypeId";
+import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 
 export function List() {
-  const [pokemons, setPokemons] = useState<{
-    list: PokemonConfig[];
-    page: number;
-    options: {
-      type: keyof typeof TypesConfig;
-    };
-  }>({ list: [], page: 0, options: { type: "any" } });
+  const [pokemons, setPokemons] = useState<PokemonListConfig>({
+    list: [],
+    page: 0,
+    options: { type: "any" },
+  });
 
   const offsetUpdate = (page: number) => {
     setPokemons({ ...pokemons, page: page });
@@ -39,34 +37,34 @@ export function List() {
     const typeId = getTypeId(pokemons.options.type);
 
     const options = {
-      type: typeId
-    }
+      type: typeId,
+    };
 
     getFilteredPokemons(options).then((responseList) => {
       if (responseList) {
-        getListData(responseList, true);
+        getListData(responseList);
       }
     });
-  }
+  };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
     setPokemons({ ...pokemons, options: { type: newType } });
   };
 
-  const getListData = (list: any, filtered?: boolean) => {
-    const unorderedList: any[] = [];
+  const getListData = (list: Array<PokemonNameConfig>) => {
+    const orderedList: any[] = [];
 
-    list?.map((pokemon: any) => {
-      const name = filtered ? pokemon.pokemon.name : pokemon.name;
+    list?.map((pokemon) => {
+      const name = pokemon.name;
 
       getPokemonData(name).then((pokemonData) => {
         if (pokemonData) {
-          unorderedList.push(pokemonData.data);
+          orderedList.push(pokemonData.data);
 
-          if (unorderedList.length === list.length) {
+          if (orderedList.length === list.length) {
             setPokemons({
               ...pokemons,
-              list: unorderedList.sort((a, b) => {
+              list: orderedList.sort((a, b) => {
                 return a.id - b.id;
               }),
             });
@@ -77,26 +75,33 @@ export function List() {
   };
 
   useEffect(listUpdate, [pokemons.page]);
-  useEffect(filteredListUpdate, [pokemons.options.type])
+  useEffect(filteredListUpdate, [pokemons.options.type]);
 
   return (
     <S.List>
       <Filters options={pokemons.options} typeUpdate={typeUpdate} />
       <Pagination page={pokemons.page} update={offsetUpdate} />
       <S.Results>
-        {pokemons.list?.map((card, index) => {
-          const { id, name, sprites, types } = card;
+        {pokemons.list!.map((card, index) => {
+          const {
+            id,
+            name,
+            sprites: { other: { "official-artwork": { front_default }}},
+            types,
+            types: { 0: { type: { name: type }}},
+          } = card;
 
-          return (
-            <Card
-              id={id}
-              name={name}
-              sprites={sprites}
-              type={types[0].type.name}
-              types={types}
-              key={index}
-            />
-          );
+          if (card)
+            return (
+              <Card
+                id={id}
+                name={name}
+                sprite={front_default}
+                type={type}
+                types={types}
+                key={index}
+              />
+            );
         })}
       </S.Results>
       <Pagination page={pokemons.page} update={offsetUpdate} />

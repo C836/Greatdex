@@ -1,4 +1,4 @@
-import { TypesConfig } from "../types/pokemons";
+import { TypesConfig } from "../types";
 import { types } from "../global";
 
 export function getTypeId(type: keyof typeof TypesConfig) {
