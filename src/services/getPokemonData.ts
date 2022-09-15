@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_URL } from ".";
-import { PokemonConfig } from "../types/pokemons";
+import { PokemonConfig } from "../types";
 
 export async function getPokemonData(
   name: string
