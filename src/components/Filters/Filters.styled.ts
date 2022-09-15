@@ -12,7 +12,7 @@ export const Search = styled.input``;
 export const TypeSelector = styled.div`
   height: 40px;
   cursor: pointer;
-`
+`;
 
 export const TypeOptions = styled.ul`
   display: flex;

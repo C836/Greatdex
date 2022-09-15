@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { TypesConfig } from "../../types/pokemons";
 import { types } from "../../global";
+import { TypesConfig } from "../../types";
 
 export const Type = styled.div<{ type: keyof typeof TypesConfig }>`
   line-height: 0;

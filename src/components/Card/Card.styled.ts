@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import { TypesConfig } from "../../types/pokemons";
+import { TypesConfig } from "../../types";
 
 export const Card = styled.figure<{ type: keyof typeof TypesConfig }>`
   display: flex;
@@ -14,7 +13,7 @@ export const Card = styled.figure<{ type: keyof typeof TypesConfig }>`
   position: relative;
   cursor: pointer;
   box-sizing: border-box;
-  transition: all .1s;
+  transition: all 0.1s;
 
   :hover {
     outline: 3px solid black;
@@ -62,7 +61,7 @@ export const Id = styled.div<{ pokeId: number }>`
   position: absolute;
   top: -10px;
   left: -10px;
-  width: ${props => 55 + (String(props.pokeId).length - 1) * 10}px;
+  width: ${(props) => 55 + (String(props.pokeId).length - 1) * 10}px;
   height: 35px;
   background-color: #4f070f;
   clip-path: polygon(0 0, 100% 0%, 70% 100%, 0 100%);
@@ -76,7 +75,7 @@ export const Id = styled.div<{ pokeId: number }>`
     align-items: center;
     top: 5px;
     left: 5px;
-    width: ${props => 31 + (String(props.pokeId).length - 1) * 10}px;
+    width: ${(props) => 31 + (String(props.pokeId).length - 1) * 10}px;
     height: 25px;
     background-color: #c40b24;
     clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
@@ -90,7 +89,7 @@ export const Id = styled.div<{ pokeId: number }>`
     align-items: center;
     top: 5px;
     left: 5px;
-    width: ${props => 41 + (String(props.pokeId).length - 1) * 10}px;
+    width: ${(props) => 41 + (String(props.pokeId).length - 1) * 10}px;
     height: 25px;
     background-color: #c40b24;
     clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
