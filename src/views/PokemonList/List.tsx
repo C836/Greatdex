@@ -32,19 +32,21 @@ export function List() {
   };
 
   const filteredListUpdate = () => {
-    setPokemons({ ...pokemons, list: [] });
+    if (pokemons.options.type !== "any") {
+      setPokemons({ ...pokemons, list: [] });
 
-    const typeId = getTypeId(pokemons.options.type);
+      const typeId = getTypeId(pokemons.options.type);
 
-    const options = {
-      type: typeId,
-    };
+      const options = {
+        type: typeId,
+      };
 
-    getFilteredPokemons(options).then((responseList) => {
-      if (responseList) {
-        getListData(responseList);
-      }
-    });
+      getFilteredPokemons(options).then((responseList) => {
+        if (responseList) {
+          getListData(responseList);
+        }
+      });
+    }
   };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
