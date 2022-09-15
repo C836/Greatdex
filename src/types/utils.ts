@@ -1,15 +1,3 @@
-export interface PokemonConfig {
-  id: number;
-  name: string;
-  sprites: any;
-  type: keyof typeof TypesConfig;
-  types: {
-    type: {
-      name: keyof typeof TypesConfig;
-    };
-  }[];
-}
-
 export enum TypesConfig {
   "any",
   "normal",
