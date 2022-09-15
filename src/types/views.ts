@@ -22,3 +22,7 @@ export interface SearchListConfig {
   id: number;
   name: string;
 }
+
+export interface ActiveMenusConfig {
+  typeMenu: boolean;
+}

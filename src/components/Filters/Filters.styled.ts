@@ -14,9 +14,13 @@ export const TypeSelector = styled.div`
   cursor: pointer;
 `;
 
-export const TypeOptions = styled.ul`
+export const TypeOptions = styled.ul<{ active: boolean }>`
   display: flex;
   flex-direction: column;
-  row-gap: 7px;
+  row-gap: 8px;
   margin-top: 10px;
+  transition: all 0.2s;
+
+  pointer-events: ${(props) => (props.active ? "all" : "none")};
+  opacity: ${(props) => (props.active ? "1" : "0")};
 `;
