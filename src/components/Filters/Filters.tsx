@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { ActiveMenusConfig } from "../../types/views";
 
-export function Filters({ options: { type }, typeUpdate }: {
+export function Filters({ options: { type: selectedType }, typeUpdate }: {
   options: PokemonListOptionsConfig;
   typeUpdate: (newType: keyof typeof TypesConfig) => void;
 }) {
@@ -45,23 +45,25 @@ export function Filters({ options: { type }, typeUpdate }: {
   };
 
   useOnClickOutside(typeMenuRef, closeMenus)
-  useEffect(closeMenus, [type])
+  useEffect(closeMenus, [selectedType])
 
   return (
     <S.Filters>
       <S.TypeSelector onClick={onTypeListClick} ref={typeMenuRef}>
-        <PokeType type={type} />
+        <PokeType type={selectedType} />
 
         <S.TypeOptions active={typeMenu}>
           {Object.keys(types).map((type, index) => {
-            return (
-              <PokeType
-                //@ts-ignore
-                type={type}
-                onclick={onTypeFilterChange}
-                key={index}
-              />
-            );
+            if(type !== selectedType) {
+              return (
+                <PokeType
+                  //@ts-ignore
+                  type={type}
+                  onclick={onTypeFilterChange}
+                  key={index}
+                />
+              );
+            }
           })}
         </S.TypeOptions>
       </S.TypeSelector>
