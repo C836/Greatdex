@@ -8,6 +8,7 @@ import { getFilteredPokemons } from "../../services/getPokemons";
 import { getTypeId } from "../../utils/getTypeId";
 import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 import { GenerationsConfig } from "../../types/utils";
+import { useIsMount } from "../../hooks/useIsMount";
 
 export function List() {
   const [pokemons, setPokemons] = useState<PokemonListConfig>({
@@ -16,11 +17,24 @@ export function List() {
     options: { type: "any", generation: "any"}
   });
 
+  const isMounted = useIsMount();
+
   const offsetUpdate = (page: number) => {
     setPokemons({ ...pokemons, page: page });
   };
 
-  const listUpdate = () => {
+  const onOptionsUpdate = () => {
+    if (!isMounted) {
+      if (type === "any" && generation === "any") {
+        listUpdate()
+      } else if (type === "any") {
+        listUpdate(1000)
+      } else {
+        filteredListUpdate()
+      }
+    }
+  }
+
     setPokemons({ ...pokemons, list: [] });
 
     const offset = pokemons.page * 12;
@@ -33,7 +47,6 @@ export function List() {
   };
 
   const filteredListUpdate = () => {
-    if (pokemons.options.type !== "any") {
       setPokemons({ ...pokemons, list: [] });
 
       const typeId = getTypeId(pokemons.options.type);
@@ -47,7 +60,6 @@ export function List() {
           getListData(responseList);
         }
       });
-    }
   };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
@@ -87,7 +99,7 @@ export function List() {
   };
 
   useEffect(listUpdate, [pokemons.page]);
-  useEffect(filteredListUpdate, [pokemons.options]);
+  useEffect(onOptionsUpdate, [pokemons.options]);
 
   return (
     <S.List>
