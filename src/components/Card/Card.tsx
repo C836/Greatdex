@@ -20,7 +20,7 @@ export function Card({ id, name, sprite, type, types }: CardConfig) {
           const type = item.type.name;
           const color = typesColors[type];
 
-          return <Tag title={type} color={color} key={index} />;
+          return <Tag text={type} title={type} color={color} key={index} />;
         })}
       </S.PokemonTypes>
     </S.Card>
