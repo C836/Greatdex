@@ -8,6 +8,7 @@ export function Tag({ title, color, onclick }: {
 
   return (
     <S.Tag
+      title={title}
       color={color}
       onClick={onclick}
     >
