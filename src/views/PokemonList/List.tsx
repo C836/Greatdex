@@ -9,6 +9,7 @@ import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 import { GenerationsConfig } from "../../types/utils";
 import { checkGenerationId } from "../../utils/checkGenerationId";
 import { getGenerationRange } from "../../utils/getGenerationRange";
+import { checkPageLimit } from "../../utils/checkPageLimit";
 
 export function List() {
   const [pokemons, setPokemons] = useState<PokemonListConfig>({
@@ -19,6 +20,8 @@ export function List() {
 
   const { list, page, options } = pokemons;
   const { type, generation } = options;
+
+  const reachedPageLimit = checkPageLimit(list, options);
 
   const offsetUpdate = (page: number) => {
     setPokemons({ ...pokemons, page: page });
@@ -82,11 +85,11 @@ export function List() {
   };
 
   useEffect(listUpdate, [page, options]);
-
+  
   return (
     <S.List>
       <Filters options={options} optionsUpdate={optionsUpdate} />
-      <Pagination page={page} update={offsetUpdate} />
+      <Pagination disabled={reachedPageLimit} page={page} update={offsetUpdate} />
       <S.Results>
         {list!.map((card, index) => {
           const {
@@ -119,7 +122,7 @@ export function List() {
           }
         })}
       </S.Results>
-      <Pagination page={page} update={offsetUpdate} />
+      <Pagination disabled={reachedPageLimit} page={page} update={offsetUpdate} />
     </S.List>
   );
 }
