@@ -4,72 +4,41 @@ import { Card } from "../../components/Card/Card";
 import { getPokemonData, getPokemons } from "../../services";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filters } from "../../components/Filters/Filters";
-import { getFilteredPokemons } from "../../services/getPokemons";
 import { getTypeId } from "../../utils/getTypeId";
 import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 import { GenerationsConfig } from "../../types/utils";
 import { checkGenerationId } from "../../utils/checkGenerationId";
-import { useIsMount } from "../../hooks/useIsMount";
 import { getGenerationRange } from "../../utils/getGenerationRange";
 
 export function List() {
   const [pokemons, setPokemons] = useState<PokemonListConfig>({
     list: [],
     page: 0,
-    options: { type: "any", generation: "any"}
+    options: { type: "any", generation: "any" },
   });
 
-  const { list, page, options: { type, generation }} = pokemons;
-
-  const isMounted = useIsMount();
+  const { list, page, options } = pokemons;
+  const { type, generation } = options;
 
   const offsetUpdate = (page: number) => {
     setPokemons({ ...pokemons, page: page });
   };
-
-  const onOptionsUpdate = () => {
-    if (!isMounted) {
-      if (type === "any" && generation === "any") {
-        listUpdate()
-      } else if (type === "any") {
-        listUpdate()
-      } else {
-        filteredListUpdate()
-      }
-    }
-  }
 
   const listUpdate = () => {
     setPokemons({ ...pokemons, list: [] });
 
     const { start } = getGenerationRange(generation);
 
-    const offset = start + (pokemons.page * 12);
+    const offset = start + page * 12;
     const limit = 12;
-  
+
     const options = {
       offset: offset,
-      limit: limit
-    }
-
-    getPokemons(options).then((responseList) => {
-      console.log(responseList)
-      if (responseList) {
-        getListData(responseList);
-      }
-    });
-  };
-
-  const filteredListUpdate = () => {
-    setPokemons({ ...pokemons, list: [] });
-
-    const typeId = getTypeId(pokemons.options.type);
-
-    const options = {
-      type: typeId,
+      limit: limit,
+      type: getTypeId(type),
     };
 
-    getFilteredPokemons(options).then((responseList) => {
+    getPokemons(options).then((responseList) => {
       if (responseList) {
         getListData(responseList);
       }
@@ -77,17 +46,17 @@ export function List() {
   };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
-    setPokemons({ ...pokemons, options: { ...pokemons.options, type: newType } });
+    setPokemons({ ...pokemons, options: { ...options, type: newType } });
   };
 
   const generationUpdate = (newGen: keyof typeof GenerationsConfig) => {
-    setPokemons({ ...pokemons, options: { ...pokemons.options, generation: newGen } });
+    setPokemons({ ...pokemons, options: { ...options, generation: newGen } });
   };
 
   const optionsUpdate = {
     typeUpdate: typeUpdate,
-    generationUpdate: generationUpdate
-  }
+    generationUpdate: generationUpdate,
+  };
 
   const getListData = (list: Array<PokemonNameConfig>) => {
     const orderedList: any[] = [];
@@ -112,25 +81,31 @@ export function List() {
     });
   };
 
-  useEffect(listUpdate, [pokemons.page]);
-  useEffect(onOptionsUpdate, [pokemons.options]);
+  useEffect(listUpdate, [page, options]);
 
   return (
     <S.List>
-      <Filters options={pokemons.options} optionsUpdate={optionsUpdate} />
-      <Pagination page={pokemons.page} update={offsetUpdate} />
+      <Filters options={options} optionsUpdate={optionsUpdate} />
+      <Pagination page={page} update={offsetUpdate} />
       <S.Results>
-        {pokemons.list!.map((card, index) => {
+        {list!.map((card, index) => {
           const {
             id,
             name,
-            sprites: { other: { "official-artwork": { front_default }}},
+            sprites: {
+              other: {
+                "official-artwork": { front_default },
+              },
+            },
             types,
-            types: { 0: { type: { name: type }}},
+            types: {
+              0: {
+                type: { name: type },
+              },
+            },
           } = card;
 
           if (card && checkGenerationId(id, generation)) {
-
             return (
               <Card
                 id={id}
@@ -141,10 +116,10 @@ export function List() {
                 key={index}
               />
             );
-          };
+          }
         })}
       </S.Results>
-      <Pagination page={pokemons.page} update={offsetUpdate} />
+      <Pagination page={page} update={offsetUpdate} />
     </S.List>
   );
 }
