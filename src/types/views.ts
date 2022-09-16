@@ -1,4 +1,5 @@
 import { TypesConfig, PokemonTypesConfig, PokemonConfig } from ".";
+import { GenerationsConfig } from "./utils";
 
 export interface CardConfig {
   id: number;
@@ -16,6 +17,7 @@ export interface PokemonListConfig {
 
 export interface PokemonListOptionsConfig {
   type: keyof typeof TypesConfig;
+  generation: keyof typeof GenerationsConfig;
 }
 
 export interface SearchListConfig {
@@ -25,4 +27,5 @@ export interface SearchListConfig {
 
 export interface ActiveMenusConfig {
   typeMenu: boolean;
+  generationMenu: boolean;
 }

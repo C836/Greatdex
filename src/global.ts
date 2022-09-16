@@ -29,3 +29,27 @@ export const typesColors = {
   dark: "rgb(112, 87, 70)",
   fairy: "rgb(214, 133, 173)",
 };
+
+export const generationsColors = {
+  any: "#555",
+  "generation-i": "rgba(128, 187, 29)",
+  "generation-ii": "rgba(202, 198, 46)",
+  "generation-iii": "rgba(103,193,171)",
+  "generation-iv": "rgba(144,114,163)",
+  "generation-v": "rgba(107,174,206)",
+  "generation-vi": "rgba(203,11,79)",
+  "generation-vii": "rgba(220,90,64)",
+  "generation-viii": "rgba(172,55,158)",
+};
+
+export const generationTitles = {
+  "any": "any",
+  "generation-i": "Kanto - I",
+  "generation-ii": "Johto - II",
+  "generation-iii": "Hoenn - III",
+  "generation-iv": "Sinnoh - IV",
+  "generation-v": "Unova - V",
+  "generation-vi": "Kalos - VI",
+  "generation-vii": "Alola - VII",
+  "generation-viii": "Galar - VIII",
+};

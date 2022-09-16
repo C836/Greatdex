@@ -1,37 +1,65 @@
 import * as S from "./Filters.styled";
-import { typesColors } from "../../global";
+import { generationsColors, generationTitles, typesColors } from "../../global";
 import { PokemonListOptionsConfig, TypesConfig } from "../../types";
 import { Tag } from "../Tag/Tag";
 import { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { ActiveMenusConfig } from "../../types/views";
+import { GenerationsConfig } from "../../types/utils";
 
-export function Filters({ options: { type: selectedType }, typeUpdate }: {
+export function Filters({
+  options: { type: selectedType, generation: selectedGeneration },
+  optionsUpdate: { typeUpdate, generationUpdate },
+}: {
   options: PokemonListOptionsConfig;
-  typeUpdate: (newType: keyof typeof TypesConfig) => void;
+  optionsUpdate: {
+    typeUpdate: (newType: keyof typeof TypesConfig) => void;
+    generationUpdate: (newGen: keyof typeof GenerationsConfig) => void;
+  };
 }) {
-  const [ activeMenus, setActiveMenus ] = useState<ActiveMenusConfig>({
-    typeMenu: false
+  const [activeMenus, setActiveMenus] = useState<ActiveMenusConfig>({
+    typeMenu: false,
+    generationMenu: false,
   });
 
-  const { typeMenu } = activeMenus;
+  const { typeMenu, generationMenu } = activeMenus;
 
-  const typeMenuRef = useRef() as React.RefObject<HTMLDivElement>
+  const typeMenuRef = useRef() as React.RefObject<HTMLDivElement>;
+  const generationMenuRef = useRef() as React.RefObject<HTMLDivElement>;
 
-  const onTypeFilterChange = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onTypeFilterChange = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     const target = event.target as HTMLDivElement;
-    const title: keyof typeof TypesConfig = target.title as unknown as keyof typeof TypesConfig;
+    const title: keyof typeof TypesConfig =
+      target.title as unknown as keyof typeof TypesConfig;
 
     typeUpdate(title);
   };
 
+  const onGenFilterChange = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    const target = event.target as HTMLDivElement;
+    const title: keyof typeof GenerationsConfig =
+      target.title as unknown as keyof typeof GenerationsConfig;
+
+    generationUpdate(title);
+  };
+
   const onTypeListClick = () => {
     if (typeMenu) {
-      closeMenus()
+      closeMenus();
     } else {
-      setActiveMenus({...activeMenus,
-        typeMenu: true
-      });
+      setActiveMenus({ ...activeMenus, typeMenu: true });
+    }
+  };
+
+  const onGenListClick = () => {
+    if (generationMenu) {
+      closeMenus();
+    } else {
+      setActiveMenus({ ...activeMenus, generationMenu: true });
     }
   };
 
@@ -41,11 +69,15 @@ export function Filters({ options: { type: selectedType }, typeUpdate }: {
       return menu;
     }, {} as ActiveMenusConfig);
 
-    setActiveMenus(closedMenusObj)
+    setActiveMenus(closedMenusObj);
   };
 
-  useOnClickOutside(typeMenuRef, closeMenus)
-  useEffect(closeMenus, [selectedType])
+  const selectedMenuRef = activeMenus.typeMenu
+    ? typeMenuRef
+    : generationMenuRef
+
+  useOnClickOutside(selectedMenuRef, closeMenus);
+  useEffect(closeMenus, [selectedType]);
 
   return (
     <S.Filters>
@@ -56,17 +88,42 @@ export function Filters({ options: { type: selectedType }, typeUpdate }: {
           {(Object.keys(typesColors) as Array<keyof typeof TypesConfig>).map(
             (type, index) => {
               if (type !== selectedType) {
-              return (
-                <Tag
+                return (
+                  <Tag
                     text={type}
-                  title={type}
-                  color={typesColors[type]}
-                  onclick={onTypeFilterChange}
-                  key={index}
-                />
-              );
+                    title={type}
+                    color={typesColors[type]}
+                    onclick={onTypeFilterChange}
+                    key={index}
+                  />
+                );
+              }
             }
-          })}
+          )}
+        </S.TypeOptions>
+      </S.TypeSelector>
+
+      <S.TypeSelector onClick={onGenListClick} ref={generationMenuRef}>
+        <Tag text={generationTitles[selectedGeneration]} title={selectedGeneration} color={generationsColors[selectedGeneration]} />
+
+        <S.TypeOptions active={generationMenu}>
+          {(Object.keys(generationsColors) as Array<keyof typeof GenerationsConfig>).map(
+            (generation, index) => {
+              if (generation !== selectedGeneration) {
+                const text = generationTitles[generation];
+
+                return (
+                  <Tag
+                    text={text}
+                    title={generation}
+                    color={generationsColors[generation]}
+                    onclick={onGenFilterChange}
+                    key={index}
+                  />
+                );
+              }
+            }
+          )}
         </S.TypeOptions>
       </S.TypeSelector>
     </S.Filters>

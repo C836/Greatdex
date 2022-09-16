@@ -7,12 +7,13 @@ import { Filters } from "../../components/Filters/Filters";
 import { getFilteredPokemons } from "../../services/getPokemons";
 import { getTypeId } from "../../utils/getTypeId";
 import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
+import { GenerationsConfig } from "../../types/utils";
 
 export function List() {
   const [pokemons, setPokemons] = useState<PokemonListConfig>({
     list: [],
     page: 0,
-    options: { type: "any" },
+    options: { type: "any", generation: "any"}
   });
 
   const offsetUpdate = (page: number) => {
@@ -50,8 +51,17 @@ export function List() {
   };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
-    setPokemons({ ...pokemons, options: { type: newType } });
+    setPokemons({ ...pokemons, options: { ...pokemons.options, type: newType } });
   };
+
+  const generationUpdate = (newGen: keyof typeof GenerationsConfig) => {
+    setPokemons({ ...pokemons, options: { ...pokemons.options, generation: newGen } });
+  };
+
+  const optionsUpdate = {
+    typeUpdate: typeUpdate,
+    generationUpdate: generationUpdate
+  }
 
   const getListData = (list: Array<PokemonNameConfig>) => {
     const orderedList: any[] = [];
@@ -77,11 +87,11 @@ export function List() {
   };
 
   useEffect(listUpdate, [pokemons.page]);
-  useEffect(filteredListUpdate, [pokemons.options.type]);
+  useEffect(filteredListUpdate, [pokemons.options]);
 
   return (
     <S.List>
-      <Filters options={pokemons.options} typeUpdate={typeUpdate} />
+      <Filters options={pokemons.options} optionsUpdate={optionsUpdate} />
       <Pagination page={pokemons.page} update={offsetUpdate} />
       <S.Results>
         {pokemons.list!.map((card, index) => {
