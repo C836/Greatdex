@@ -1,8 +1,9 @@
 import * as S from "./Tag.styled";
 
-export function Tag({ title, color, onclick }: {
-  title: string
-  color: string,
+export function Tag({ text, title, color, onclick }: {
+  text: string;
+  title: string;
+  color: string;
   onclick?: React.MouseEventHandler<HTMLDivElement>;
 }) {
 
@@ -12,7 +13,7 @@ export function Tag({ title, color, onclick }: {
       color={color}
       onClick={onclick}
     >
-      {title}
+      {text}
     </S.Tag>
   );
 }

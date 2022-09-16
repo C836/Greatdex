@@ -50,13 +50,15 @@ export function Filters({ options: { type: selectedType }, typeUpdate }: {
   return (
     <S.Filters>
       <S.TypeSelector onClick={onTypeListClick} ref={typeMenuRef}>
-        <Tag title={selectedType} color={typesColors[selectedType]} />
+        <Tag text={selectedType} title={selectedType} color={typesColors[selectedType]} />
 
         <S.TypeOptions active={typeMenu}>
-          {(Object.keys(typesColors) as Array<keyof typeof TypesConfig>).map((type, index) => {
-            if(type !== selectedType) {
+          {(Object.keys(typesColors) as Array<keyof typeof TypesConfig>).map(
+            (type, index) => {
+              if (type !== selectedType) {
               return (
                 <Tag
+                    text={type}
                   title={type}
                   color={typesColors[type]}
                   onclick={onTypeFilterChange}
