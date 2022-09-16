@@ -10,6 +10,7 @@ import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 import { GenerationsConfig } from "../../types/utils";
 import { checkGenerationId } from "../../utils/checkGenerationId";
 import { useIsMount } from "../../hooks/useIsMount";
+import { getGenerationRange } from "../../utils/getGenerationRange";
 
 export function List() {
   const [pokemons, setPokemons] = useState<PokemonListConfig>({
@@ -31,19 +32,28 @@ export function List() {
       if (type === "any" && generation === "any") {
         listUpdate()
       } else if (type === "any") {
-        listUpdate(1000)
+        listUpdate()
       } else {
         filteredListUpdate()
       }
     }
   }
 
-  const listUpdate = (limit?: number) => {
+  const listUpdate = () => {
     setPokemons({ ...pokemons, list: [] });
 
-    const offset = pokemons.page * 12;
+    const { start } = getGenerationRange(generation);
 
-    getPokemons(offset, limit ? limit : 12).then((responseList) => {
+    const offset = start + (pokemons.page * 12);
+    const limit = 12;
+  
+    const options = {
+      offset: offset,
+      limit: limit
+    }
+
+    getPokemons(options).then((responseList) => {
+      console.log(responseList)
       if (responseList) {
         getListData(responseList);
       }
