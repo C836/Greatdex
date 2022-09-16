@@ -1,8 +1,8 @@
 import { TypesConfig } from "../types";
-import { types } from "../global";
+import { typesColors } from "../global";
 
 export function getTypeId(type: keyof typeof TypesConfig) {
-  const typeList = Object.keys(types);
+  const typeList = Object.keys(typesColors);
 
   const typeIndex = typeList.indexOf(type);
 

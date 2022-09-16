@@ -1,7 +1,8 @@
 import * as S from "./Card.styled";
 import background from "./../../assets/img/poke_background.svg";
-import { PokeType } from "../PokeType/PokeType";
+import { Tag } from "../Tag/Tag";
 import { CardConfig } from "../../types";
+import { typesColors } from "../../global";
 
 export function Card({ id, name, sprite, type, types }: CardConfig) {
   return (
@@ -17,8 +18,9 @@ export function Card({ id, name, sprite, type, types }: CardConfig) {
       <S.PokemonTypes>
         {types.map((item, index) => {
           const type = item.type.name;
+          const color = typesColors[type];
 
-          return <PokeType type={type} key={index} />;
+          return <Tag title={type} color={color} key={index} />;
         })}
       </S.PokemonTypes>
     </S.Card>

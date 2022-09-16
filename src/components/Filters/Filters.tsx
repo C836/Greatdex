@@ -1,7 +1,7 @@
 import * as S from "./Filters.styled";
-import { types } from "../../global";
+import { typesColors } from "../../global";
 import { PokemonListOptionsConfig, TypesConfig } from "../../types";
-import { PokeType } from "../PokeType/PokeType";
+import { Tag } from "../Tag/Tag";
 import { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { ActiveMenusConfig } from "../../types/views";
@@ -50,15 +50,15 @@ export function Filters({ options: { type: selectedType }, typeUpdate }: {
   return (
     <S.Filters>
       <S.TypeSelector onClick={onTypeListClick} ref={typeMenuRef}>
-        <PokeType type={selectedType} />
+        <Tag title={selectedType} color={typesColors[selectedType]} />
 
         <S.TypeOptions active={typeMenu}>
-          {Object.keys(types).map((type, index) => {
+          {(Object.keys(typesColors) as Array<keyof typeof TypesConfig>).map((type, index) => {
             if(type !== selectedType) {
               return (
-                <PokeType
-                  //@ts-ignore
-                  type={type}
+                <Tag
+                  title={type}
+                  color={typesColors[type]}
                   onclick={onTypeFilterChange}
                   key={index}
                 />

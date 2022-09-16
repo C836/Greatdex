@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import { types } from "../../global";
-import { TypesConfig } from "../../types";
 
-export const Type = styled.div<{ type: keyof typeof TypesConfig }>`
+export const Tag = styled.div<{ color: string }>`
   line-height: 0;
   font: 600 0.9rem "Segoe UI", sans-serif;
   padding: 3px 15px;
   text-transform: uppercase;
   border-radius: 25px;
   position: relative;
-  background-color: ${(props) => types[props.type]};
+  background-color: ${(props) => props.color};
   display: flex;
   align-items: center;
   justify-content: center;

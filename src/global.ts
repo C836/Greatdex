@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const types = {
+export const typesColors = {
   any: "#bdbdbd",
   normal: "rgb(168, 167, 122)",
   fighting: "rgb(194, 46, 40)",
