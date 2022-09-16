@@ -5,6 +5,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    user-select: none;
+  }
+
+  img {
+    pointer-events: none;
   }
 `;
 
