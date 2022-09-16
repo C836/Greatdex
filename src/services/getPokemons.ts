@@ -2,11 +2,11 @@ import axios from "axios";
 import { BASE_URL } from ".";
 import { getFilteredPokemonList } from "../utils/getFilteredPokemonLIst";
 
-export async function getPokemons(limit: number, offset: number) {
+export async function getPokemons(offset: number, limit?: number) {
   try {
     const response = await axios.get(BASE_URL + "/pokemon", {
       params: {
-        limit: 12,
+        limit: limit ? limit : 1000,
         offset: offset,
       },
     });

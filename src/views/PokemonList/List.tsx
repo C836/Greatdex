@@ -8,6 +8,7 @@ import { getFilteredPokemons } from "../../services/getPokemons";
 import { getTypeId } from "../../utils/getTypeId";
 import { PokemonListConfig, PokemonNameConfig, TypesConfig } from "../../types";
 import { GenerationsConfig } from "../../types/utils";
+import { checkGenerationId } from "../../utils/checkGenerationId";
 import { useIsMount } from "../../hooks/useIsMount";
 
 export function List() {
@@ -16,6 +17,8 @@ export function List() {
     page: 0,
     options: { type: "any", generation: "any"}
   });
+
+  const { list, page, options: { type, generation }} = pokemons;
 
   const isMounted = useIsMount();
 
@@ -35,11 +38,12 @@ export function List() {
     }
   }
 
+  const listUpdate = (limit?: number) => {
     setPokemons({ ...pokemons, list: [] });
 
     const offset = pokemons.page * 12;
 
-    getPokemons(12, offset).then((responseList) => {
+    getPokemons(offset, limit ? limit : 12).then((responseList) => {
       if (responseList) {
         getListData(responseList);
       }
@@ -47,19 +51,19 @@ export function List() {
   };
 
   const filteredListUpdate = () => {
-      setPokemons({ ...pokemons, list: [] });
+    setPokemons({ ...pokemons, list: [] });
 
-      const typeId = getTypeId(pokemons.options.type);
+    const typeId = getTypeId(pokemons.options.type);
 
-      const options = {
-        type: typeId,
-      };
+    const options = {
+      type: typeId,
+    };
 
-      getFilteredPokemons(options).then((responseList) => {
-        if (responseList) {
-          getListData(responseList);
-        }
-      });
+    getFilteredPokemons(options).then((responseList) => {
+      if (responseList) {
+        getListData(responseList);
+      }
+    });
   };
 
   const typeUpdate = (newType: keyof typeof TypesConfig) => {
@@ -115,7 +119,8 @@ export function List() {
             types: { 0: { type: { name: type }}},
           } = card;
 
-          if (card)
+          if (card && checkGenerationId(id, generation)) {
+
             return (
               <Card
                 id={id}
@@ -126,6 +131,7 @@ export function List() {
                 key={index}
               />
             );
+          };
         })}
       </S.Results>
       <Pagination page={pokemons.page} update={offsetUpdate} />

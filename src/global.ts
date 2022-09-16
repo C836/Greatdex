@@ -53,3 +53,15 @@ export const generationTitles = {
   "generation-vii": "Alola - VII",
   "generation-viii": "Galar - VIII",
 };
+
+export const generationsRange = {
+  "any": [0, 905],
+  "generation-i": [0, 151],
+  "generation-ii": [152, 251],
+  "generation-iii": [252, 386],
+  "generation-iv": [387, 493],
+  "generation-v": [494, 649],
+  "generation-vi": [650, 721],
+  "generation-vii": [722, 809],
+  "generation-viii": [810, 905],
+};
