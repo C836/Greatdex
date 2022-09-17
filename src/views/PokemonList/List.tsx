@@ -84,8 +84,13 @@ export function List() {
     });
   };
 
-  useEffect(listUpdate, [page, options]);
-  
+  const resetPage = () => {
+    offsetUpdate(0);
+  }
+
+  useEffect(listUpdate, [page]);
+  useEffect(resetPage, [options]);
+
   return (
     <S.List>
       <Filters options={options} optionsUpdate={optionsUpdate} />
