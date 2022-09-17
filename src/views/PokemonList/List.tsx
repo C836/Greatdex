@@ -86,10 +86,12 @@ export function List() {
 
   const resetPage = () => {
     offsetUpdate(0);
+
+    listUpdate();
   }
 
-  useEffect(listUpdate, [page]);
   useEffect(resetPage, [options]);
+  useEffect(listUpdate, [pokemons.page]);
 
   return (
     <S.List>
