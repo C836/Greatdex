@@ -1,6 +1,6 @@
 import * as S from "./List.styled";
 import { useEffect, useState } from "react";
-import { Card } from "../../components/Card/Card";
+import { Card, Ghost } from "../../components/Card/Card";
 import { getPokemonData, getPokemons } from "../../services";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filters } from "../../components/Filters/Filters";
@@ -98,7 +98,10 @@ export function List() {
       <Filters options={options} optionsUpdate={optionsUpdate} />
       <Pagination disabled={reachedPageLimit} page={page} update={offsetUpdate} />
       <S.Results>
-        {list!.map((card, index) => {
+        {!list.length && [...Array(12)].map((placeholder, index) => (
+          <Ghost />
+        ))}
+        {list.length && list.map((card, index) => {
           const {
             id,
             name,

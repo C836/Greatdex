@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { TypesConfig } from "../../types";
 
-export const Card = styled.figure<{ type: keyof typeof TypesConfig }>`
+export const Card = styled.figure<{ type?: keyof typeof TypesConfig }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,8 +21,8 @@ export const Card = styled.figure<{ type: keyof typeof TypesConfig }>`
 `;
 
 export const SpriteWrapper = styled.figure<{
-  type: keyof typeof TypesConfig;
-  background: string;
+  type?: keyof typeof TypesConfig;
+  background?: string;
 }>`
   width: 100%;
   height: 100%;
@@ -40,7 +40,8 @@ export const SpriteWrapper = styled.figure<{
   }
 `;
 
-export const Sprite = styled.img`
+export const Sprite = styled.img<{ disabled: boolean }>`
+  display: ${(props) => props.disabled && "none"};
   object-fit: contain;
   image-rendering: pixelated;
   width: 100%;
@@ -57,11 +58,13 @@ export const Specie = styled.h1`
     1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 `;
 
-export const Id = styled.div<{ pokeId: number }>`
+export const Id = styled.div<{ pokeId?: number }>`
   position: absolute;
   top: -10px;
   left: -10px;
-  width: ${(props) => 55 + (String(props.pokeId).length - 1) * 10}px;
+  width: ${(props) => props.pokeId
+    ? 55 + (String(props.pokeId).length - 1) * 10
+    : 55 }px;
   height: 35px;
   background-color: #4f070f;
   clip-path: polygon(0 0, 100% 0%, 70% 100%, 0 100%);
@@ -75,7 +78,9 @@ export const Id = styled.div<{ pokeId: number }>`
     align-items: center;
     top: 5px;
     left: 5px;
-    width: ${(props) => 31 + (String(props.pokeId).length - 1) * 10}px;
+    width: ${(props) => props.pokeId
+    ? 31 + (String(props.pokeId).length - 1) * 10
+    : 31 }px;
     height: 25px;
     background-color: #c40b24;
     clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
@@ -89,7 +94,9 @@ export const Id = styled.div<{ pokeId: number }>`
     align-items: center;
     top: 5px;
     left: 5px;
-    width: ${(props) => 41 + (String(props.pokeId).length - 1) * 10}px;
+    width: ${(props) => props.pokeId
+    ? 41 + (String(props.pokeId).length - 1) * 10
+    : 41 }px;
     height: 25px;
     background-color: #c40b24;
     clip-path: polygon(0 0, 100% 0%, 73% 100%, 0 100%);
@@ -103,3 +110,7 @@ export const PokemonTypes = styled.div`
   margin-top: 20px;
   column-gap: 15px;
 `;
+
+export const Ghost = styled(Card)`
+  opacity: 0.3;
+`
