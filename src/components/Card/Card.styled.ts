@@ -40,7 +40,7 @@ export const SpriteWrapper = styled.figure<{
   }
 `;
 
-export const Sprite = styled.img<{ disabled: boolean }>`
+export const Sprite = styled.img<{ disabled?: boolean }>`
   display: ${(props) => props.disabled && "none"};
   object-fit: contain;
   image-rendering: pixelated;

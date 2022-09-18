@@ -98,10 +98,10 @@ export function List() {
       <Filters options={options} optionsUpdate={optionsUpdate} />
       <Pagination disabled={reachedPageLimit} page={page} update={offsetUpdate} />
       <S.Results>
-        {!list.length && [...Array(12)].map((placeholder, index) => (
+        {!list.length && [...Array(12)].map(() => (
           <Ghost />
         ))}
-        {list.length && list.map((card, index) => {
+        {list.map((card, index) => {
           const {
             id,
             name,
