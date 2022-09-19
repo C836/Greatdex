@@ -5,12 +5,14 @@ import { List } from "./views/PokemonList/List";
 
 function App() {
   return (
-    <>
-      <GlobalStyle />
-      <Header />
-      <List />
+    <div className="app">
+      <div>
+        <GlobalStyle />
+        <Header />
+        <List />
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

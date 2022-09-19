@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
 
+  .app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   img {
     pointer-events: none;
   }

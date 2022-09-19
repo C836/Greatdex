@@ -7,6 +7,15 @@ export const Filters = styled.div`
   align-items: center;
 `;
 
+export const Right = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  justify-content: end;
+  float: right;
+`;
+
 export const Search = styled.input``;
 
 export const TypeSelector = styled.div`
